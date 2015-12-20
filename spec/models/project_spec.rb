@@ -26,4 +26,15 @@ RSpec.describe Project do
     # which using object being matched as argument
     expect(project.done?).to be_truthy
   end
+
+  it 'knows that a project with an incomplete task is not done' do
+    project = Project.new
+    task = Task.new
+    project.tasks << task
+
+    # below can also be:
+    # expect(project.done?).not_to be_truthy
+    # but that is hard to read
+    expect(project.done?).to be_falsy
+  end
 end
